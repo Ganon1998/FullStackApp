@@ -2,17 +2,27 @@ import React from 'react';
 import Post from './Post/Post';
 import useStyles from './styles';
 import { useSelector } from 'react-redux';
+import { Grid, CircularProgress } from '@material-ui/core';
 
 
-const Posts = () => {
+const Posts = ({ setCurrentId }) => {
     const posts = useSelector((state) => state.posts); // create a hook
     const classes = useStyles();
+
     return (
-        <>
-            <h1>POSTS</h1>
-            <Post />
-            <Post />
-        </>
+        // if post is 0 then show CircularPro, anything > 0 then it shows grid
+        !posts.length ? <CircularProgress /> : (
+            <Grid className={classes.container} container alignItems="stretch" spacing={3}>
+                {
+                    posts.map((post) => (
+                        <Grid key={post._id} item xs={12} sm={6}>
+                            <Post post={post} setCurrentId={setCurrentId}/>
+                        </Grid>
+                    ))
+                }
+
+            </Grid>
+        )
     );
 }
 

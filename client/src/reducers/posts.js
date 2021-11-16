@@ -10,6 +10,13 @@ export default (posts = [], action) => {
             // send array of post and spread the post and add new post with payload
             return [...posts, action.payload];
 
+        case 'UPDATE':
+            // return updated array
+            return posts.map((post) => (post._id === action.payload._id ? action.payload : post));
+
+        case 'DELETE':
+            return posts.filter((post) => post._id !== action.payload);
+
         default:
             return posts;
     }
