@@ -39,7 +39,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}> 
-            <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Memory</Typography>
+            <Typography variant="h6">{ currentId ? 'Editing' : 'Creating' } a Memory</Typography>
 
             <TextField 
                 name="creator" 
@@ -67,7 +67,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 variant="outlined" 
                 label="Tags" 
                 fullWidth value={postData.tags} 
-                onChange={(event) => setPostData({ ...postData, tags: event.target.value })}
+                onChange={(event) => setPostData({ ...postData, tags: event.target.value.split(',') })}
             />
 
             <div className={classes.fileInput}>
