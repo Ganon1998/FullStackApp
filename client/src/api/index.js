@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://mern-app-not-instagram.herokuapp.com/posts';
+const url = 'http://localhost:5000/posts';
 
 // this function is used for fetching all posts from server at port 5000
 // we need to have dispatchers and reducers to do this
